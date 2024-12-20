@@ -71,7 +71,7 @@ function borrarUsuario(nombre, email) {
   });
   console.log(`El usuario con nombre: ${nombre} e email:${email} ha sido eliminado.`);
 }
-// Llamar a la función para buscar un libro por su ID
+// Llamar a la función para borrar un usuario por su nombre, mail
 borrarUsuario('Lara', 'LaraGala@gmail.com');
 
 

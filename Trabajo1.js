@@ -109,6 +109,6 @@ function borrarLibroPorId(id) {
   });
   console.log(`El libro con ID ${id} ha sido eliminado. Esta es la nueva lista de libros:`, nuevaListaLibros);
 }
-// Llamar a la función para buscar un libro por su ID
+// Llamar a la función para borrar un libro por su ID
 borrarLibroPorId(4);
 
