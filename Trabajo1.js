@@ -95,6 +95,20 @@ function ordenarLibrosPorAnio(libros){
 }
 
 // Llamada a la función para ordenar los libros por año
-ordenarLibrosPorAnio(libros);
+//ordenarLibrosPorAnio(libros);
 // Mostrar el resultado en consola
-console.log(libros);
+//console.log(libros);
+
+//Desarrollar una función borrarLibro(id) que elimine el libro que se le pase por parámetro. O sea: crear una función que pueda buscar un 
+// libro específico dentro de un conjunto (en este caso, un array de libros) y luego eliminarlo si lo encuentra.
+
+function borrarLibroPorId(id) {
+    // Filtra todos los libros cuyo id no sea igual al id pasado como parámetro
+  const nuevaListaLibros = libros.filter(function(libro) {
+    return  libro.id !== id;
+  });
+  console.log(`El libro con ID ${id} ha sido eliminado. Esta es la nueva lista de libros:`, nuevaListaLibros);
+}
+// Llamar a la función para buscar un libro por su ID
+borrarLibroPorId(4);
+//console.log(libros);
