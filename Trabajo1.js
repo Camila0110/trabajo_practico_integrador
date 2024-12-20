@@ -59,8 +59,8 @@ function agregarLibro(id, titulo, autor, anio, genero) {
     console.log("Nuevo libro agregado:", nuevoLibro);
   }
 
-//agregarLibro (11, "La casa de Bernarda Alba", "Federico García Lorca", 1945, "drama"); 
-//console.log(libros);
+agregarLibro (11, "La casa de Bernarda Alba", "Federico García Lorca", 1945, "drama"); 
+console.log(`Asi queda la lista de Libros:`, libros);
 
 //Buscar Libros:
 function  buscarLibro(criterio, valor) {
@@ -73,7 +73,7 @@ function  buscarLibro(criterio, valor) {
 }
 
 //// Ejemplo de uso:
-//console.log(buscarLibro("titulo", "1984")); // Buscar por título
+console.log(`Este es el libro encontrado por título:` , buscarLibro("titulo", "1984")); // Buscar por título
 //console.log(buscarLibro("autor", "Gabriel García Márquez")); // Buscar por autor
 //console.log(buscarLibro("genero", "Ciencia Ficción")); // Buscar por género
    
@@ -95,9 +95,9 @@ function ordenarLibrosPorAnio(libros){
 }
 
 // Llamada a la función para ordenar los libros por año
-//ordenarLibrosPorAnio(libros);
+ordenarLibrosPorAnio(libros);
 // Mostrar el resultado en consola
-//console.log(libros);
+console.log(`Esta es la lista ordenada por años:` , libros);
 
 //Desarrollar una función borrarLibro(id) que elimine el libro que se le pase por parámetro. O sea: crear una función que pueda buscar un 
 // libro específico dentro de un conjunto (en este caso, un array de libros) y luego eliminarlo si lo encuentra.
@@ -111,4 +111,4 @@ function borrarLibroPorId(id) {
 }
 // Llamar a la función para buscar un libro por su ID
 borrarLibroPorId(4);
-//console.log(libros);
+
