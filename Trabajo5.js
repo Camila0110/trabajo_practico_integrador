@@ -22,6 +22,38 @@ const prompt = require('prompt-sync')()
         { id: 10, titulo: 'Sapiens: De animales a dioses', autor: 'Yuval Noah Harari', anio: 2011, genero: 'No ficción', disponible: true }
     ];
     
+    let usuarios = [
+        { id: 20, 
+        nombre: 'Ramón', 
+        email: 'ramonHu@gmail.com', 
+        librosPrestados: [1, 5, 8, 10 ]
+        },
+        
+        { id: 25, 
+            nombre: 'Lara', 
+            email: 'LaraGala@gmail.com',  
+            librosPrestados: [2, 6, 7 ]
+        },
+    
+        { id: 38, 
+           nombre: 'Ramón', 
+           email: 'ramonHu@gmail.com', 
+           librosPrestados: [7, 8, 10 ]
+        },
+    
+        { id: 40, 
+            nombre: 'Hernán', 
+            email: 'hernanGona@gmail.com', 
+            librosPrestados: [2, 3, 9, 10 ]
+         },
+    
+         { id: 43, 
+            nombre: 'María', 
+            email: 'mariajafe@gmail.com', 
+            librosPrestados: [2, 5, 7, 8, 9]
+         }
+    ];
+
 
 //generar funcion :
 function generarReporteLibros(libros, librosPrestados, genero, anio) {
@@ -29,10 +61,19 @@ function generarReporteLibros(libros, librosPrestados, genero, anio) {
   const contandoLibros = libros.reduce(function (acum,libro) {
     return acum + 1 ; // Sumar 1 por cada libro en el array
     },0);
-    console.log (contandoLibros);
+    console.log("Cantidad total de libros:", contandoLibros);
+    // Total de libros prestados (contando todos los libros prestados de todos los usuarios)
+const contandoLibrosPrestados = usuarios.reduce(function (acum,usuario) {
+        return acum + usuario.librosPrestados.length ; // Sumar la cantidad de libros prestados de cada usuario
+        }, 0);
+        console.log("Cantidad de libros prestados:", contandoLibrosPrestados);
 }
-// Llamar a la función para sumar libros
-generarReporteLibros(libros);
+
+
+
+// Llamar a la función para sumar libros y sumar librosPrestados
+generarReporteLibros(libros, usuarios);
+
 
 
 
