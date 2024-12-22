@@ -1,4 +1,5 @@
-//Crear una función generarReporteLibros() 
+//5.
+// Crear una función generarReporteLibros() 
 //que utilice métodos avanzados de arrays (.map(), .filter(), .reduce()) para generar un reporte con la siguiente información://
 //Cantidad total de libros.
 //Cantidad de libros prestados.
