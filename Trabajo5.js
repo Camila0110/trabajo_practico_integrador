@@ -56,7 +56,7 @@ const prompt = require('prompt-sync')()
 
 
 //generar funcion :
-function generarReporteLibros(libros, librosPrestados, genero, anio) {
+function generarReporteLibros(libros, usuarios) {
     // cantidad total de libros
   const contandoLibros = libros.reduce(function (acum,libro) {
     return acum + 1 ; // Sumar 1 por cada libro en el array
@@ -67,14 +67,53 @@ const contandoLibrosPrestados = usuarios.reduce(function (acum,usuario) {
         return acum + usuario.librosPrestados.length ; // Sumar la cantidad de libros prestados de cada usuario
         }, 0);
         console.log("Cantidad de libros prestados:", contandoLibrosPrestados);
+    /// Paso 1: Filtrar los libros por género
+    const librosPorGenero = libros.filter(function(libro) {
+        return libro.genero ; // Filtra todos los libros que tengan un género
+    });
+        // Paso 2: Extraer un array solo con géneros
+   const soloGeneros = librosPorGenero.map(function(libro) {
+       return libro.genero;
+       });
+       
+      //Paso 3: Contar la frecuencia en que cada genero aparece.
+      const contarGeneros = soloGeneros.reduce(function(acum, genero) {
+        if (acum[genero]) {
+          acum[genero]++;
+        } else {
+          acum[genero] = 1;
+        }
+        return acum;
+      }, {}); 
+
+    console.log("Cantidad de libros por género:", contarGeneros);
+
+   //Libro más antiguo y más nuevo. Dos funciones, para saber el más antiguo y para saber el más nuevo.
+
+   const libroMasAntiguo = function(libros) {
+        return libros.reduce(function(acum, libro){
+            return (libro.anio < acum.anio) ? libro : acum; // Compara años de publicación
+    });
+    };
+    const resultadoMasAntiguo = libroMasAntiguo(libros);  // Llamar a la función
+    console.log("Libro más antiguo:", resultadoMasAntiguo);  // Mostrar el resultado
+
+    const libroMasNuevo = function(libros) {
+        return libros.reduce(function(acum, libro){
+            return (libro.anio > acum.anio) ? libro : acum; // Compara años de publicación
+    });
+    };
+    const resultadoMasNuevo = libroMasNuevo(libros);  // Llamar a la función
+    console.log("Libro más nuevo:", resultadoMasNuevo);  // Mostrar el resultado
+
 }
+      
 
 
-
-// Llamar a la función para sumar libros y sumar librosPrestados
+// Llamar a la función para sumar libros, sumar librosPrestados, cantidad de libros por género. 
 generarReporteLibros(libros, usuarios);
 
-
+ 
 
 
 
