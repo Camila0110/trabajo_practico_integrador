@@ -113,3 +113,181 @@ function borrarLibroPorId(id) {
 // Llamar a la función para borrar un libro por su ID
 borrarLibroPorId(4);
 
+//3. Gestión de Usuarios
+
+//Implementar una función registrarUsuario(nombre, email) que agregue un nuevo usuario al array usuarios.
+
+//Agregar Usuario
+function agregarUsuario(id, nombre, email, librosPrestados) {
+    const nuevoUsuario = { id, nombre, email, librosPrestados };
+    usuarios.push(nuevoUsuario);
+    console.log("Nuevo usuario agregado:", nuevoUsuario);
+  }
+
+agregarUsuario (47, "Alex", "alexha@gmail.com", [3, 5, 9]); 
+
+//Implementar una función mostrarTodosLosUsuarios() que me devuelva el array completo de usuarios.
+mostrarTodosLosUsuarios = usuarios.map(function(usuarios){
+    return(usuarios);
+});
+console.log(`Asi queda la lista de usuarios:`, usuarios);
+
+//Crear una función buscarUsuario(email) que devuelva la información de un usuario dado su email.
+function  buscarUsuario(criterio, valor) {
+    for (let i = 0; i < usuarios.length; i++) {
+        if (usuarios[i][criterio] === valor) {
+            return usuarios[i]; // Devuelve el libro encontrado
+        }
+    }
+    return "No se encontraron usuarios que coincidan con esa búsqueda."; // Si no encuentra nada
+};
+
+//// Ejemplo de uso:
+console.log(`Este es el usuario encontrado según su mail:` , buscarUsuario("email", "ramonHu@gmail.com")); // Buscar por email
+
+//Implementar una función borrarUsuario(nombre, email) que elimine el usuario seleccionado.
+
+function borrarUsuario(nombre, email) {
+    // Filtra todos los usuarios cuyo nombre e email no sean igual al nombre e email pasado como parámetro.
+  const nuevaListaUsuarios = usuarios.filter(function(usuarios) {
+    return  usuarios.nombre.email !== nombre.email;
+  });
+  console.log(`El usuario con nombre: ${nombre} e email:${email} ha sido eliminado.`);
+}
+// Llamar a la función para borrar un usuario por su nombre, mail
+borrarUsuario('Lara', 'LaraGala@gmail.com');
+
+//4.Sistema de Préstamos 
+
+
+
+
+
+
+
+
+
+
+
+//5. Reportes. Generar funcion :
+function generarReporteLibros(libros, usuarios) {
+    // cantidad total de libros
+  const contandoLibros = libros.reduce(function (acum,libro) {
+    return acum + 1 ; // Sumar 1 por cada libro en el array
+    },0);
+    console.log("Cantidad total de libros:", contandoLibros);
+    // Total de libros prestados (contando todos los libros prestados de todos los usuarios)
+const contandoLibrosPrestados = usuarios.reduce(function (acum,usuario) {
+        return acum + usuario.librosPrestados.length ; // Sumar la cantidad de libros prestados de cada usuario
+        }, 0);
+        console.log("Cantidad de libros prestados:", contandoLibrosPrestados);
+    /// Paso 1: Filtrar los libros por género
+    const librosPorGenero = libros.filter(function(libro) {
+        return libro.genero ; // Filtra todos los libros que tengan un género
+    });
+        // Paso 2: Extraer un array solo con géneros
+   const soloGeneros = librosPorGenero.map(function(libro) {
+       return libro.genero;
+       });
+       
+      //Paso 3: Contar la frecuencia en que cada genero aparece.
+      const contarGeneros = soloGeneros.reduce(function(acum, genero) {
+        if (acum[genero]) {
+          acum[genero]++;
+        } else {
+          acum[genero] = 1;
+        }
+        return acum;
+      }, {}); 
+
+    console.log("Cantidad de libros por género:", contarGeneros);
+
+   //Libro más antiguo y más nuevo. Dos funciones, para saber el más antiguo y para saber el más nuevo.
+
+   const libroMasAntiguo = function(libros) {
+        return libros.reduce(function(acum, libro){
+            return (libro.anio < acum.anio) ? libro : acum; // Compara años de publicación
+    });
+    };
+    const resultadoMasAntiguo = libroMasAntiguo(libros);  // Llamar a la función
+    console.log("Libro más antiguo:", resultadoMasAntiguo);  // Mostrar el resultado
+
+    const libroMasNuevo = function(libros) {
+        return libros.reduce(function(acum, libro){
+            return (libro.anio > acum.anio) ? libro : acum; // Compara años de publicación
+    });
+    };
+    const resultadoMasNuevo = libroMasNuevo(libros);  // Llamar a la función
+    console.log("Libro más nuevo:", resultadoMasNuevo);  // Mostrar el resultado
+
+}
+      
+
+
+// Llamar a la función para sumar libros, sumar librosPrestados, cantidad de libros por género. 
+generarReporteLibros(libros, usuarios);
+
+ //6. Identificación Avanzada de libros
+
+
+
+
+
+
+
+
+
+ //7.Cálculos Estadísticos
+
+function calcularEstadisticas(libros, anios) {
+    // Paso 1: Sumar los años de publicación
+    const sumaAnios = libros.reduce(function (suma, libro) {
+        return suma + libro.anio;
+    }, 0);
+    //console.log(`Esta es la suma de años:`, sumaAnios);
+    // Paso 2: Calcular el promedio
+    const promedio = sumaAnios / libros.length;
+    //console.log (`Este es el promedio de la suma de años:`,promedio)
+    // Paso 3: Redondear el promedio
+     const promedioRedondeado = Math.round(promedio);
+     // Paso 4: Mostrar el promedio redondeado
+    console.log(`El promedio redondeado de años de publicación es:`, promedioRedondeado);
+     // Paso 5: Retornar el resultado redondeado
+    return promedioRedondeado;
+  
+
+}
+
+// Llamada a la función
+calcularEstadisticas(libros);
+
+
+
+//8. Manejo de Cadenas
+
+
+
+
+
+
+
+
+//9.Interfaz de Usuario por Consola
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
