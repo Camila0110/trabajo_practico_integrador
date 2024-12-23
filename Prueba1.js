@@ -1,4 +1,4 @@
-//Desarrollar un sistema de gestión para una biblioteca que permita administrar libros y usuarios, 
+/Desarrollar un sistema de gestión para una biblioteca que permita administrar libros y usuarios, 
 // aplicando los conceptos fundamentales de JavaScript vistos en el módulo.
 
 //1.Estructura de Datos
@@ -54,17 +54,17 @@ let usuarios = [
 //2. Funciones de Gestión de Libros
 
 //Agregar Libros
-function agregarLibro(id, titulo, autor, anio, genero) {
+function agregarLibroPrompt(id, titulo, autor, anio, genero) {
     const nuevoLibro = { id, titulo, autor, anio, genero };
     libros.push(nuevoLibro);
     console.log("Nuevo libro agregado:", nuevoLibro);
   }
 
-agregarLibro ();
-console.log(`Asi queda la lista de Libros:`, libros);
+agregarLibroPrompt (); 
+//console.log(`Asi queda la lista de Libros:`, libros);
 
-///Buscar Libros:
-function  buscarLibro(criterio, valor) {
+//Buscar Libros:
+function  buscarLibroPrompt(criterio, valor) {
     for (let i = 0; i < libros.length; i++) {
         if (libros[i][criterio] === valor) {
             return libros[i]; // Devuelve el libro encontrado
@@ -72,11 +72,8 @@ function  buscarLibro(criterio, valor) {
     }
     return "No se encontraron libros que coincidan con el criterio."; // Si no encuentra nada
 }
+//buscarLibroPrompt();
 
-//// Ejemplo de uso:
-console.log(`Este es el libro encontrado por título:` , buscarLibro("titulo", "1984")); // Buscar por título
-//console.log(buscarLibro("autor", "Gabriel García Márquez")); // Buscar por autor
-//console.log(buscarLibro("genero", "Ciencia Ficción")); // Buscar por género
 
 //// Ejemplo de uso:
 //console.log(`Este es el libro encontrado por título:` , buscarLibro("titulo", "1984")); // Buscar por título
@@ -85,7 +82,9 @@ console.log(`Este es el libro encontrado por título:` , buscarLibro("titulo", "
    
 //Ordenar libros según anios:
 
-function ordenarLibrosPorAnio(libros){
+function ordenarLibrosPorAnioPrompt(libros){
+
+    
     // Algoritmo de burbuja para ordenar el array 'libros' según la propiedad 'anio'
     for (let i = 0; i < libros.length; i++) {
         for (let j=0; j< libros.length - 1; j++){
@@ -98,12 +97,20 @@ function ordenarLibrosPorAnio(libros){
         }
     }
 }
+return libros; // Retorna el array ordenado
 }
 
-// Llamada a la función para ordenar los libros por año
-ordenarLibrosPorAnio(libros);
-// Mostrar el resultado en consola
-console.log(`Esta es la lista ordenada por años:` , libros);
+
+
+
+//console.log("\nLibros ordenados por año:");
+console.log(ordenarLibrosPorAnioPrompt(libros));
+ordenarLibrosPorAnioPrompt();
+
+
+
+
+
 
 //Desarrollar una función borrarLibro(id) que elimine el libro que se le pase por parámetro. O sea: crear una función que pueda buscar un 
 // libro específico dentro de un conjunto (en este caso, un array de libros) y luego eliminarlo si lo encuentra.
@@ -116,7 +123,7 @@ function borrarLibroPorId(id) {
   console.log(`El libro con ID ${id} ha sido eliminado. Esta es la nueva lista de libros:`, nuevaListaLibros);
 }
 // Llamar a la función para borrar un libro por su ID
-borrarLibroPorId(4);
+//borrarLibroPorId(4);
 
 //3. Gestión de Usuarios
 
@@ -129,13 +136,13 @@ function agregarUsuario(id, nombre, email, librosPrestados) {
     console.log("Nuevo usuario agregado:", nuevoUsuario);
   }
 
-agregarUsuario (47, "Alex", "alexha@gmail.com", [3, 5, 9]); 
+//agregarUsuario (47, "Alex", "alexha@gmail.com", [3, 5, 9]); 
 
 //Implementar una función mostrarTodosLosUsuarios() que me devuelva el array completo de usuarios.
 mostrarTodosLosUsuarios = usuarios.map(function(usuarios){
     return(usuarios);
 });
-console.log(`Asi queda la lista de usuarios:`, usuarios);
+//console.log(`Asi queda la lista de usuarios:`, usuarios);
 
 //Crear una función buscarUsuario(email) que devuelva la información de un usuario dado su email.
 function  buscarUsuario(criterio, valor) {
@@ -148,7 +155,7 @@ function  buscarUsuario(criterio, valor) {
 };
 
 //// Ejemplo de uso:
-console.log(`Este es el usuario encontrado según su mail:` , buscarUsuario("email", "ramonHu@gmail.com")); // Buscar por email
+//console.log(`Este es el usuario encontrado según su mail:` , buscarUsuario("email", "ramonHu@gmail.com")); // Buscar por email
 
 //Implementar una función borrarUsuario(nombre, email) que elimine el usuario seleccionado.
 
@@ -160,7 +167,7 @@ function borrarUsuario(nombre, email) {
   console.log(`El usuario con nombre: ${nombre} e email:${email} ha sido eliminado.`);
 }
 // Llamar a la función para borrar un usuario por su nombre, mail
-borrarUsuario('Lara', 'LaraGala@gmail.com');
+//borrarUsuario('Lara', 'LaraGala@gmail.com');
 
 //4.Sistema de Préstamos 
 
@@ -205,7 +212,7 @@ const contandoLibrosPrestados = usuarios.reduce(function (acum,usuario) {
         return acum;
       }, {}); 
 
-    console.log("Cantidad de libros por género:", contarGeneros);
+    //console.log("Cantidad de libros por género:", contarGeneros);
 
    //Libro más antiguo y más nuevo. Dos funciones, para saber el más antiguo y para saber el más nuevo.
 
@@ -230,7 +237,7 @@ const contandoLibrosPrestados = usuarios.reduce(function (acum,usuario) {
 
 
 // Llamar a la función para sumar libros, sumar librosPrestados, cantidad de libros por género. 
-generarReporteLibros(libros, usuarios);
+//generarReporteLibros(libros, usuarios);
 
  //6. Identificación Avanzada de libros
 
@@ -244,15 +251,11 @@ generarReporteLibros(libros, usuarios);
 
  //7.Cálculos Estadísticos
 
-function calcularEstadisticas(libros) {
+function calcularEstadisticas(libros, anios) {
     // Paso 1: Sumar los años de publicación
     const sumaAnios = libros.reduce(function (suma, libro) {
-        if (typeof libro.anio === 'number') {
-            return suma + libro.anio;  // Solo suma si 'anio' es un número
-        }
-        return suma;  // Si no es un número, no lo suma
+        return suma + libro.anio;
     }, 0);
-    
     //console.log(`Esta es la suma de años:`, sumaAnios);
     // Paso 2: Calcular el promedio
     const promedio = sumaAnios / libros.length;
@@ -268,7 +271,7 @@ function calcularEstadisticas(libros) {
 }
 
 // Llamada a la función
-calcularEstadisticas(libros);
+//calcularEstadisticas(libros);
 
 
 
@@ -282,3 +285,109 @@ calcularEstadisticas(libros);
 
 
 //9.Interfaz de Usuario por Consola
+
+// Función principal del menú. Se pensaron unas opciones para el usuario en menuPrincipal.
+
+// Función para el menú principal
+
+function menuPrincipal(){
+    let tengoQueSalir = false
+
+    while(!tengoQueSalir){
+        console.log("hola bienvenido al programa de Gestión de Bibliotecas. Esta es la lista de opciones que podes elegir: ")
+        console.log('1) Agregar Libro')
+        console.log('2) Buscar libro')
+        console.log('3) Ordenar Libros Por Año')
+        console.log('4) Borrar libros')
+        console.log('5) Agregar Usuario')
+        console.log('6) Mostrar todos los Usuarios')
+        console.log('7) Buscar Usuario')
+        console.log('8) Prestar Libro')
+        console.log('9) Devolver Libro')
+        console.log('10) Generar Reporte Libros')
+        console.log('11) calcular Estadisticas')
+        console.log('12) Normalizar Datos')
+       
+        console.log('13) Salir')
+        
+        let opcionElegida = prompt('Elegi lo que queres hacer: ');
+
+        switch(opcionElegida){
+            case "1":
+                //agregarLibro();
+                agregarLibroPrompt()
+                break;
+            case "2":
+                //buscarLibro()
+                buscarLibroPrompt()
+                break;
+            case "3":
+                //ordenarlibros()
+                ordenarLibrosPorAnioPrompt()
+                break;
+            case "4":
+                //borrarlibros()
+                borrarlibrosPrompt()
+                break;
+            case "5":
+                //agregarUsuario()
+                agregarUsuarioPrompt()
+                break;
+            case "6":
+                //mostrarTodosLosUsuarios()
+                mostrarTodosLosUsuariosPrompt()
+                break;
+            case "7":
+                //buscarUsuario()
+                buscarUsuarioPrompt()
+                break;
+            case "8":
+               //prestarLibro()
+               prestarLibroPrompt()
+                    break;
+            case "9":
+              //devolverLibro()
+              devolverLibroPrompt()
+                   break;
+            case "10":
+              //generarReporteLibros()
+              generarReporteLibrosPrompt()
+                  break;
+            case "11":
+              //calcularEstadistica()
+              calcularEstadisticaPrompt()
+                  break;
+             case "12":
+                  //normalizarDatos()
+                  normalizarDatosPrompt()
+                     break;
+            case "13 ":
+                tengoQueSalir = true;
+                break;
+            default:
+                console.log('opcion ingresada incorrecta, elija una de las correctas')
+        }
+
+        if (!tengoQueSalir){
+            let continuar = prompt('Desea continuar? Si/No : ');
+
+            if(continuar.toLowerCase() === 'si'){
+                tengoQueSalir = false;
+            }
+            else
+            {
+                tengoQueSalir = true;
+            }
+        }
+    }
+    
+}
+
+
+
+
+menuPrincipal()
+
+
+
+
