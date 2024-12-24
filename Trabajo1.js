@@ -61,7 +61,8 @@ function agregarLibro(id, titulo, autor, anio, genero) {
   }
 
 agregarLibro ();
-console.log(`Asi queda la lista de Libros:`, libros);
+//console.log(`Asi queda la lista de Libros:`, libros);
+
 
 ///Buscar Libros:
 function  buscarLibro(criterio, valor) {
@@ -282,3 +283,20 @@ calcularEstadisticas(libros);
 
 
 //9.Interfaz de Usuario por Consola
+
+
+
+
+
+
+
+
+
+// Función para el menú principal
+
+
+
+
+
+
+

@@ -1,105 +1,113 @@
 
 
 // Función para el menú principal
+const prompt = require('prompt-sync')()
+
 
 function menuPrincipal(){
-    let tengoQueSalir = false
+    let opcion;
+   
+    let continuar = true; // Variable para controlar si el usuario desea continuar
 
-    while(!tengoQueSalir){
-        console.log("hola bienvenido al programa de Gestión de Bibliotecas. Esta es la lista de opciones que podes elegir: ")
-        console.log('1) Agregar Libro')
-        console.log('2) Buscar libro')
-        console.log('3) Ordenar Libros Por Año')
-        console.log('4) Borrar libros')
-        console.log('5) Agregar Usuario')
-        console.log('6) Mostrar todos los Usuarios')
-        console.log('7) Buscar Usuario')
-        console.log('8) Prestar Libro')
-        console.log('9) Devolver Libro')
-        console.log('10) Generar Reporte Libros')
-        console.log('11) calcular Estadisticas')
-        console.log('12) Normalizar Datos')
+
+    do{
+
+        console.log("\n--- Menú Principal ---");
+        console.log('1) Agregar Libro');
+        console.log('2) Buscar libro');
+        console.log('3) Ordenar Libros Por Año');
+        console.log('4) Borrar libros');
+        console.log('5) Agregar Usuario');
+        console.log('6) Mostrar todos los Usuarios');
+        console.log('7) Buscar Usuario');
+        console.log('8) Prestar Libro');
+        console.log('9) Devolver Libro');
+        console.log('10) Generar Reporte Libros');
+        console.log('11) calcular Estadisticas');
+        console.log('12) Normalizar Datos');
        
-        console.log('13) Salir')
+        console.log('0) Salir');
         
-        let opcionElegida = prompt('Elegi lo que queres hacer: ');
+        opcion = parseInt(prompt('Seleccione una opción: '));console.log()
 
-        switch(opcionElegida){
-            case "1":
+        switch(opcion){
+            case 1:
                 //agregarLibro();
-                agregarLibroPrompt()
+                const id = parseInt(prompt("Ingrese ID del libro: "));
+                const titulo = prompt("Ingrese título del libro: ");
+                const autor = prompt("Ingrese autor del libro: ");
+                const anio = parseInt(prompt("Ingrese año de publicación: "));
+                const genero = prompt("Ingrese género del libro: ");
+                agregarLibro(id, titulo, autor, anio, genero);
                 break;
-            case "2":
+            case 2:
                 //buscarLibro()
-                buscarLibroPrompt()
+                const criterio = prompt("Buscar por (id, titulo, autor, genero): ");
+                const valor = prompt("Ingrese valor de búsqueda: ");
+                console.log(buscarLibro(criterio, valor));
                 break;
-            case "3":
+            case 3:
                 //ordenarlibros()
-                ordenarLibrosPorAnioPrompt()
+                ordenarLibrosPorAnio(libros);
+                console.log("Libros ordenados por año:", libros);
                 break;
-            case "4":
+            case 4:
                 //borrarlibros()
-                borrarlibrosPrompt()
+                const idBorrar = parseInt(prompt("Ingrese ID del libro a borrar: "));
+                borrarLibroPorId(idBorrar);
                 break;
-            case "5":
+            case 5:
                 //agregarUsuario()
-                agregarUsuarioPrompt()
+                const usuarioId = parseInt(prompt("Ingrese ID del usuario: "));
+                const nombre = prompt("Ingrese nombre del usuario: ");
+                const email = prompt("Ingrese email del usuario: ");
+                agregarUsuario(usuarioId, nombre, email, []);
                 break;
-            case "6":
+            case 6:
                 //mostrarTodosLosUsuarios()
                 mostrarTodosLosUsuariosPrompt()
                 break;
-            case "7":
+            case 7:
                 //buscarUsuario()
-                buscarUsuarioPrompt()
+                const emailBuscar = prompt("Ingrese email del usuario: ");
+                console.log(buscarUsuario("email", emailBuscar));
                 break;
-            case "8":
+            case 8:
                //prestarLibro()
                prestarLibroPrompt()
                     break;
-            case "9":
+            case 9:
               //devolverLibro()
               devolverLibroPrompt()
                    break;
-            case "10":
+            case 10:
               //generarReporteLibros()
-              generarReporteLibrosPrompt()
-                  break;
-            case "11":
+              generarReporteLibros(libros, usuarios);
+                break;
+            case 11:
               //calcularEstadistica()
               calcularEstadisticaPrompt()
                   break;
-             case "12":
+             case 12:
                   //normalizarDatos()
                   normalizarDatosPrompt()
                      break;
-            case "13 ":
-                tengoQueSalir = true;
-                break;
-            default:
-                console.log('opcion ingresada incorrecta, elija una de las correctas')
+              case 0:
+                   console.log('Saliendo del programa...');
+                   continuar = false; // Detener el ciclo
+                  break;
         }
-
-        if (!tengoQueSalir){
-            let continuar = prompt('Desea continuar? Si/No : ');
-
-            if(continuar.toLowerCase() === 'si'){
-                tengoQueSalir = false;
-            }
-            else
-            {
-                tengoQueSalir = true;
+        if (continuar) {
+            const respuesta = prompt('¿Desea realizar otra acción? (si/no): ').toLowerCase();
+            if (respuesta !== 'si') {
+                continuar = false; // Salir del ciclo
+                console.log('Gracias por usar el sistema. ¡Hasta luego!');
             }
         }
-    }
-    
+    } while (continuar);
 }
 
 
 
 
-menuPrincipal()
-
-
-
-
+menuPrincipal();
